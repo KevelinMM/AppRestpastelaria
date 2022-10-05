@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Pagina Inicial</title>
-  </head>
-  <body>
-    <h1>Pagina inicial da WEB APP feita por Kevelin</h1>
-    <h1>Uso de render_template</h1>
-  </body>
-</html>
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block content
+%}
+<h1>Página inicial</h1>
+<p class="important">Seja bem vindo!</p>
+
+<ul>
+  <li><a href="{{ url_for('index.formIndex') }}">Home</a></li>
+  <li><a href="{{ url_for('cliente.formListaCliente') }}">Clientes</a></li>
+  <li><a href="{{ url_for('produto.formListaProduto') }}">Produtos</a></li>
+  <li>
+    <a href="{{ url_for('funcionario.formListaFuncionario') }}">Funcionários</a>
+  </li>
+</ul>
+
+{% endblock %}
