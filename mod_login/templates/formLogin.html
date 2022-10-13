@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
+%}
+
+<div class="container">
+  <form name="cliente" id="cliente" action="" method="POST">
+    <h1>Login de usuário</h1>
+    <div class="form-group">
+      <label for="id">Email</label>
+      <br />
+      <input
+        class="form-control"
+        type="text"
+        name="id"
+        id="id"
+        value=""
+        placeholder="Código"
+        readonly
+      />
+      <br />
+    </div>
+
+    <div class="form-group">
+      <label for="senha">Senha</label>
+      <br />
+      <input
+        class="form-control"
+        type="password"
+        name="senha"
+        id="senha"
+        value="Bolinhas"
+        placeholder="Senha"
+        required
+      />
+      <br />
+    </div>
+
+    <button
+      class="btn btn-success"
+      type="submit"
+      name="salvaUsuarioDB"
+      id="salvaUsuarioDB"
+    >
+      <i class="fa fa-check"></i> Entrar
+    </button>
+  </form>
+</div>
+{% endblock %}

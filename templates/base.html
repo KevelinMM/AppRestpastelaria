@@ -2,7 +2,7 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}{% endblock %} - AbcBolinhas</title>
+    <title>{% block title %}{% endblock %} - Pastelaria</title>
     {% block style %}{% endblock %}
     <style>
       .important {
@@ -19,40 +19,83 @@
     />
     <link
       rel="shortcut icon"
-      href="{{ url_for('static', filename='favicon.ico') }}"
+      href="{{ url_for('static', filename='favicon.png') }}"
     />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
   </head>
+
   <body>
     {% block menu %}
-    <ul>
-      <li>
-        <a href="{{ url_for('index.formIndex') }}"
-          ><i class="fas fa-home"></i> HOME</a
-        >
-      </li>
-      <li>
-        <a href="{{ url_for('funcionario.formListaFuncionario') }}"
-          ><i class="fas fa-cart-arrow-down"></i> FUNCIONÁRIOS</a
-        >
-      </li>
-      <li>
-        <a href="{{ url_for('cliente.formListaCliente') }}"
-          ><i class="fas fa-users"></i> CLIENTES</a
-        >
-      </li>
-      <li>
-        <a href="{{ url_for('produto.formListaProduto') }}"
-          ><i class="fas fa-pizza-slice"></i> PRODUTOS</a
-        >
-      </li>
-    </ul>
+    <nav class="navbar navbar-expand-lg bg-light">
+      <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('index.formIndex') }}"
+                ><img class="mb-1" src="../static/favicon.png" width="25px"></img> Pastelaria</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="{{ url_for('funcionario.formListaFuncionario') }}"
+                ><i class="fas fa-cart-arrow-down"></i> Funcionário</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="{{ url_for('cliente.formListaCliente') }}"
+                ><i class="fas fa-users"></i> Cliente</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                href="{{ url_for('produto.formListaProduto') }}"
+                ><i class="fas fa-pizza-slice"></i> Produto</a
+              >
+            </li>
+          </ul>
+        
+            <a class="btn btn-outline-success" type="submit" href="{{ url_for('login.formLogin') }}">
+              Login
+              <i class="fa fa-user"></i></a>
+          
+        </div>
+      </div>
+    </nav>
     {% endblock %}
-    <div class="container-fluid mt-3">
+    <div class="container mt-4">
+
       {% block content %}{% endblock %}
       <br /><br /><br />
     </div>
     {% block footer %}
-    <a href="{{ url_for('index.formIndex') }}">&copy; 2022 by AbcBolinhas</a>
+    <div
+      class="text-center p-3 position-fixed bottom-0 w-100"
+      style="background-color: rgba(0, 0, 0, 0.2)"
+    >
+      © 2020 Copyright:
+      <a
+        class="text-dark"
+        href="https://www.kevelinmmattos.com.br/"
+        target="blank"
+        >Kevelin Mondadori</a
+      >
+    </div>
     {% endblock %} {% block js %}{% endblock %}
     <script src="{{ url_for('static', filename='bootstrap-5.2.1-dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='fontawesome-free-6.2.0-web/js/all.js') }}"></script>
