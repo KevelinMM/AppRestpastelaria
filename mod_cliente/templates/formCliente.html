@@ -78,37 +78,6 @@ content %}
     </div>
 
     <div class="form-group">
-      <label for="compra_fiado">Compra fiado</label>
-      <br />
-      <input
-        class="form-control"
-        type="tel"
-        name="compra_fiado"
-        id="compra_fiado"
-        value=""
-        placeholder="Compra Fiado"
-        maxlength="15"
-        required
-      />
-      <br />
-    </div>
-    <div class="form-group">
-      <label for="dia_fiado">Dia fiado</label>
-      <br />
-      <input
-        class="form-control"
-        type="tel"
-        name="dia_fiado"
-        id="dia_fiado"
-        value=""
-        placeholder="Dia fiado"
-        maxlength="15"
-        required
-      />
-      <br />
-    </div>
-
-    <div class="form-group">
       <label for="senha">Senha</label>
       <br />
       <input
@@ -135,9 +104,23 @@ content %}
         placeholder="Senha"
         required
       />
-
       <br />
     </div>
+
+    <div class="form-group">
+      <div class="form-check form-switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="compraFiado"
+        />
+        <label class="form-check-label" for="flexSwitchCheckDefault"
+          >Cliente poderá efetuar compras no fiado</label
+        >
+      </div>
+    </div>
+    <br />
 
     <button
       class="btn btn-success"

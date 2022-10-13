@@ -1,5 +1,27 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script
+  src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+  type="text/javascript"
+></script>
+<script
+  src="https://plentz.github.io/jquery-maskmoney/javascripts/jquery.maskMoney.min.js"
+  type="text/javascript"
+></script>
+
 {% extends "base.html" %} {% block title %}Produto{% endblock %} {% block
 content %}
+
+<script>
+  jQuery(function () {
+    jQuery("#valor").maskMoney({
+      prefix: "R$ ",
+      thousands: ".",
+      decimal: ",",
+    });
+  });
+</script>
+
 <div class="container">
   <form name="produto" id="produto" action="" method="POST">
     <h1>Cadastro de Produto</h1>
@@ -72,11 +94,11 @@ content %}
       <br />
       <input
         class="form-control"
-        type="tel"
+        type="value"
         name="valor"
         id="valor"
         value=""
-        placeholder="Valor"
+        placeholder="R$ 0,00"
         maxlength="15"
         required
       />
