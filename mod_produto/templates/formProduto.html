@@ -23,7 +23,12 @@ content %}
 </script>
 
 <div class="container">
-  <form name="produto" id="produto" action="" method="POST">
+  <form
+    name="produto"
+    id="produto"
+    action="{{ url_for('produto.insert') }}"
+    method="POST"
+  >
     <h1>Cadastro de Produto</h1>
     <div class="form-group">
       <label for="id">Código</label>

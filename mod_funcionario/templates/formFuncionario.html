@@ -10,7 +10,12 @@ content %}
 </script>
 
 <div class="container">
-  <form name="funcionario" id="funcionario" action="" method="POST">
+  <form
+    name="funcionario"
+    id="funcionario"
+    action="{{ url_for('funcionario.insert') }}"
+    method="POST"
+  >
     <h1>Cadastro de Funcionário</h1>
     <div class="form-group">
       <label for="id">Código</label>
@@ -20,7 +25,7 @@ content %}
         type="text"
         name="id"
         id="id"
-        value=""
+        value="0"
         placeholder="Código"
         readonly
       />

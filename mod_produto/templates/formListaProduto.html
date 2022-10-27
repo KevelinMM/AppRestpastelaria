@@ -9,7 +9,6 @@ content %}
       Novo Produto
     </button>
   </form>
-
   <table class="table mx-auto">
     <thead class="thead-dark">
       <tr>
@@ -23,24 +22,17 @@ content %}
       </tr>
     </thead>
     <tbody>
+      {% if result %} {% for row in result[0] %}
       <tr>
-        <th scope="row">1</th>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
+        <th scope="row">{{ row['id_produto'] }}</th>
+        <td>{{ row['nome'] }}</td>
+        <td>{{ row['descricao'] }}</td>
+        <td>{{ row['foto'] }}</td>
+        <td>{{ row['valor'] }}</td>
         <td><i class="fas fa-edit"></i></td>
         <td><i class="fas fa-trash"></i></td>
       </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td><i class="fas fa-edit"></i></td>
-        <td><i class="fas fa-trash"></i></td>
-      </tr>
+      {% endfor %} {% endif %}
     </tbody>
   </table>
 </div>

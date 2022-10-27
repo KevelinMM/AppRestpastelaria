@@ -17,31 +17,26 @@ content %}
         <th scope="col">Nome</th>
         <th scope="col">CPF</th>
         <th scope="col">Telefone</th>
+        <th scope="col">Compra fiado</th>
+        <th scope="col">Dia fiado</th>
         <th scope="col">Senha</th>
         <th scope="col">Editar</th>
         <th scope="col">Excluir</th>
       </tr>
     </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td><i class="fas fa-edit"></i></td>
-        <td><i class="fas fa-trash"></i></td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td>...</td>
-        <td><i class="fas fa-edit"></i></td>
-        <td><i class="fas fa-trash"></i></td>
-      </tr>
-    </tbody>
+    {% if result %} {% for row in result[0] %}
+    <tr>
+      <th scope="row">{{ row['id_cliente'] }}</th>
+      <td>{{ row['nome'] }}</td>
+      <td>{{ row['cpf'] }}</td>
+      <td>{{ row['telefone'] }}</td>
+      <td>{{ row['compraFiado'] }}</td>
+      <td>{{ row['diaFiado'] }}</td>
+      <td>{{ row['senha'] }}</td>
+      <td><i class="fas fa-edit"></i></td>
+      <td><i class="fas fa-trash"></i></td>
+    </tr>
+    {% endfor %} {% endif %}
   </table>
 </div>
 
