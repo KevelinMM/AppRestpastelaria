@@ -1,8 +1,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
 
-{% extends "base.html" %} {% block title %}Cliente{% endblock %} {% block
-content %}
+{% extends "base.html" %} {% block title %}Cliente{% endblock %}
+
+{% set id = result[0].id_cliente if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set cpf = result[0].cpf if result else '' %}
+{% set telefone = result[0].telefone if result else '' %}
+{% set senha = result[0].senha if result else '' %}
+{% set compraFiado = result[0].compraFiado if result else '' %}
+{% block content %}
 
 <script type="text/javascript">
   $("#telefone").mask("(00) 0000-0000");
@@ -11,10 +18,9 @@ content %}
 </script>
 
 <div class="container">
-  <form
-    name="cliente"
-    id="cliente"
-    action="{{ url_for('cliente.insert') }}"
+  <form name="{{ 'formEditar' if result else 'formAdicionar' }}"
+    id="{{ 'formEditar' if result else 'formAdicionar' }}"
+    action="{{ url_for('cliente.edit') if result else url_for('cliente.insert') }}"
     method="POST"
   >
     <h1>Cadastro de Cliente</h1>
@@ -26,7 +32,7 @@ content %}
         type="text"
         name="id"
         id="id"
-        value=""
+        value="{{ id }}"
         placeholder="Código"
         readonly
       />
@@ -41,7 +47,7 @@ content %}
         type="text"
         name="nome"
         id="nome"
-        value=""
+        value="{{ nome }}"
         placeholder="Nome Cliente"
         maxlength="100"
         autofocus
@@ -58,7 +64,7 @@ content %}
         type="text"
         name="cpf"
         id="cpf"
-        value=""
+        value="{{ cpf }}"
         placeholder="CPF"
         maxlength="15"
         required
@@ -74,7 +80,7 @@ content %}
         type="text"
         name="telefone"
         id="telefone"
-        value=""
+        value="{{ telefone }}"
         placeholder="Telefone/ Celular"
         maxlength="15"
         required
@@ -90,7 +96,7 @@ content %}
         type="password"
         name="senha"
         id="senha"
-        value="Bolinhas"
+        value="{{ senha }}"
         placeholder="Senha"
         required
       />
@@ -105,7 +111,7 @@ content %}
         type="password"
         name="resenha"
         id="resenha"
-        value="Bolinhas"
+        value="{{ senha }}"
         placeholder="Senha"
         required
       />
@@ -119,6 +125,7 @@ content %}
           type="checkbox"
           role="switch"
           id="compraFiado"
+          value="{{ compraFiado }}"
         />
         <label class="form-check-label" for="flexSwitchCheckDefault"
           >Cliente poderá efetuar compras no fiado</label

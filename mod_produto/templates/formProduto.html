@@ -9,8 +9,13 @@
   type="text/javascript"
 ></script>
 
-{% extends "base.html" %} {% block title %}Produto{% endblock %} {% block
-content %}
+{% extends "base.html" %} {% block title %}Produto{% endblock %} 
+{% set id = result[0].id_produto if result else '0' %}
+{% set nome = result[0].nome if result else '' %}
+{% set descricao = result[0].descricao if result else '' %}
+{% set foto = result[0].foto if result else '' %}
+{% set valor = result[0].valor if result else '' %}
+{% block content %}
 
 <script>
   jQuery(function () {
@@ -23,10 +28,10 @@ content %}
 </script>
 
 <div class="container">
-  <form
-    name="produto"
-    id="produto"
-    action="{{ url_for('produto.insert') }}"
+  <form 
+    name="{{ 'formEditar' if result else 'formAdicionar' }}"
+    id="{{ 'formEditar' if result else 'formAdicionar' }}"
+    action="{{ url_for('produto.edit') if result else url_for('produto.insert') }}"
     method="POST"
   >
     <h1>Cadastro de Produto</h1>
@@ -38,7 +43,7 @@ content %}
         type="text"
         name="id"
         id="id"
-        value=""
+        value="{{ id }}"
         placeholder="Código"
         readonly
       />
@@ -53,7 +58,7 @@ content %}
         type="text"
         name="nome"
         id="nome"
-        value=""
+        value="{{ nome }}"
         placeholder="Nome Produto"
         maxlength="100"
         autofocus
@@ -70,7 +75,7 @@ content %}
         type="text"
         name="descricao"
         id="descricao"
-        value=""
+        value="{{ descricao }}"
         placeholder="Descrição"
         maxlength="15"
         required
@@ -86,7 +91,7 @@ content %}
         type="file"
         name="foto"
         id="foto"
-        value=""
+        value="{{ foto }}"
         placeholder="Foto"
         maxlength="15"
         required
@@ -102,7 +107,7 @@ content %}
         type="value"
         name="valor"
         id="valor"
-        value=""
+        value="{{ valor }}"
         placeholder="R$ 0,00"
         maxlength="15"
         required
