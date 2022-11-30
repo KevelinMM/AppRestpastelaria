@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for
 import requests
 from funcoes import Funcoes
+from mod_login.login import validaSessao
 
 
 bp_produto = Blueprint('produto', __name__, url_prefix="/produto", template_folder='templates')
@@ -13,6 +14,7 @@ headers = {'x-token': 'abcBolinhasToken', 'x-key': 'abcBolinhasKey'}
 
 ''' rotas dos formulários '''
 @bp_produto.route('/', methods=['GET', 'POST'])
+@validaSessao
 def formListaProduto():
     try:
         response = requests.get(urlApiProdutos, headers=headers)
@@ -24,6 +26,7 @@ def formListaProduto():
         return render_template('formListaProduto.html', erro=e)
 
 @bp_produto.route('/form-produto', methods=['GET', 'POST'])
+@validaSessao
 def formProduto():
     return render_template('formProduto.html'), 200
 

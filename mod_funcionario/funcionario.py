@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, jsonify
 import requests
 from funcoes import Funcoes
+from mod_login.login import validaSessao
+
+
 
 bp_funcionario = Blueprint(
     'funcionario', __name__, url_prefix="/funcionario", template_folder='templates')
@@ -12,6 +15,7 @@ headers = {'x-token': 'abcBolinhasToken', 'x-key': 'abcBolinhasKey'}
 
 ''' rotas '''
 @bp_funcionario.route('/', methods=['GET', 'POST'])
+@validaSessao
 def formListaFuncionario():
     try:
         response = requests.get(urlApiFuncionarios, headers=headers)
@@ -23,6 +27,7 @@ def formListaFuncionario():
         return render_template('formListaFuncionario.html', erro=e)
 
 @bp_funcionario.route('/form-funcionario/', methods=['POST'])
+@validaSessao
 def formFuncionario():
     return render_template('formFuncionario.html')
 

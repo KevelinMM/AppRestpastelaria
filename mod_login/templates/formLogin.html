@@ -1,47 +1,19 @@
-{% extends "base.html" %} {% block title %}Login{% endblock %} {% block content
-%}
+{% extends "base.html" %}
 
-<div class="container">
-  <form name="cliente" id="cliente" action="" method="POST">
-    <h1>Login de usuário</h1>
-    <div class="form-group">
-      <label for="id">Email</label>
-      <br />
-      <input
-        class="form-control"
-        type="text"
-        name="id"
-        id="id"
-        value=""
-        placeholder="Código"
-        readonly
-      />
-      <br />
-    </div>
+{% block title %}Login{% endblock %}
 
-    <div class="form-group">
-      <label for="senha">Senha</label>
-      <br />
-      <input
-        class="form-control"
-        type="password"
-        name="senha"
-        id="senha"
-        value="Bolinhas"
-        placeholder="Senha"
-        required
-      />
-      <br />
-    </div>
+{% block menu %}
 
-    <button
-      class="btn btn-success"
-      type="submit"
-      name="salvaUsuarioDB"
-      id="salvaUsuarioDB"
-    >
-      <i class="fa fa-check"></i> Entrar
-    </button>
-  </form>
-</div>
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><h2>Login Pastelaria</h2></a>
+</nav>
 {% endblock %}
+
+{% block content %}
+<form action="{{ url_for('login.validaLogin') }}" method="post">
+  <input placeholder="CPF" name="usuario" type="text" value="abc">
+  <input placeholder="Senha" name="senha" type="password" value="Bolinhas">
+  <br>
+  <input type="submit" value="Login">
+</form>
+{% endblock %} 
